@@ -20,10 +20,14 @@ class Settings(BaseSettings):
         "postgresql+psycopg://marketstream:marketstream@localhost:5432/marketstream"
     )
     kafka_bootstrap_servers: str = "localhost:29092"
+    kafka_market_topic: str = "market-prices-v1"
+    kafka_dlq_topic: str = "market-prices-dlq-v1"
+    kafka_consumer_group: str = "marketstream-query-v1"
     s3_endpoint_url: str = "http://localhost:9000"
     s3_access_key: str = "marketstream"
     s3_secret_key: SecretStr = SecretStr("marketstream-local-only")
     s3_bucket: str = "marketstream"
+    archive_max_attempts: int = 5
 
 
 @lru_cache
