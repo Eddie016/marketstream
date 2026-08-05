@@ -1,4 +1,4 @@
-.PHONY: check down format install-dev lint lock test typecheck up
+.PHONY: check down format install-dev lint lock smoke test typecheck up
 
 check: lint typecheck test
 
@@ -13,6 +13,9 @@ install-dev:
 lock:
 	python -m piptools compile --strip-extras --generate-hashes --output-file=requirements.lock pyproject.toml
 	python -m piptools compile --strip-extras --extra=dev --generate-hashes --output-file=requirements-dev.lock pyproject.toml
+
+smoke:
+	./scripts/smoke.sh
 
 lint:
 	python -m ruff format --check .

@@ -71,8 +71,6 @@ services:
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
     ports:
       - "29092:29092"
-    volumes:
-      - kafka-data:/tmp/kraft-combined-logs
     healthcheck:
       test:
         [
@@ -97,19 +95,12 @@ services:
     volumes:
       - minio-data:/data
     healthcheck:
-      test:
-        [
-          "CMD",
-          "curl",
-          "--fail",
-          "http://localhost:9000/minio/health/live",
-        ]
+      test: ["CMD", "mc", "ready", "local"]
       interval: 5s
       timeout: 3s
       retries: 10
     restart: unless-stopped
 
 volumes:
-  kafka-data:
   minio-data:
   postgres-data:

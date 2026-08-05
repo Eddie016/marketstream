@@ -11,8 +11,8 @@ features in the resume or project README.
 - [x] FastAPI service with separate liveness and readiness contracts
 - [x] Docker Compose definitions for PostgreSQL, Kafka, MinIO, and API
 - [x] Formatting, linting, type-checking, tests, and GitHub Actions
-- [ ] Full Compose smoke test on a running Docker engine
-- [ ] GitHub remote and branch-protection settings
+- [x] Full Compose smoke test on a running Docker engine
+- [x] GitHub remote and branch-protection settings
 
 ## M1 — Reproducible data
 
