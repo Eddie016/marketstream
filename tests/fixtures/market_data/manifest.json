@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "synthetic-fixture-v1-99b42515455a",
+  "request_sha256": "99b42515455ad9278f3cac85380832a9a440b8dc113deaafdbacb85fc5b8980e",
+  "dataset_id": "synthetic-fixture-v1",
+  "provider": "synthetic-test-fixture",
+  "currency": "USD",
+  "requested_start_date": "2024-01-02",
+  "requested_end_date": "2024-01-04",
+  "generated_at": "2026-08-04T00:00:00Z",
+  "files": [
+    {
+      "symbol": "AAPL",
+      "path": "AAPL.csv",
+      "sha256": "d1b563e03a8c95b795fde02822e0591c2132e4bb3eadbc16bb1442e0aeb1f193",
+      "row_count": 3,
+      "first_date": "2024-01-02",
+      "last_date": "2024-01-04"
+    },
+    {
+      "symbol": "SPY",
+      "path": "SPY.csv",
+      "sha256": "6ad75afa17438cd052ccab63377745a55c35480789ec7519434e6c24fcb2dada",
+      "row_count": 3,
+      "first_date": "2024-01-02",
+      "last_date": "2024-01-04"
+    }
+  ]
+}

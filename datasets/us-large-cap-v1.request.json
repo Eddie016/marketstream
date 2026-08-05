@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "dataset_id": "us-large-cap-eod-v1",
+  "provider": "plotly-github",
+  "symbols": [
+    "AAPL",
+    "AMZN",
+    "GOOGL",
+    "JPM",
+    "MSFT",
+    "NVDA",
+    "XOM"
+  ],
+  "start_date": "2013-02-08",
+  "end_date": "2018-02-07",
+  "currency": "USD"
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package marketstream.v1;
+
+message MarketEvent {
+  string event_id = 1;
+  uint32 schema_version = 2;
+  string provider = 3;
+  string symbol = 4;
+  string trading_date = 5;
+  string open = 6;
+  string high = 7;
+  string low = 8;
+  string close = 9;
+  int64 volume = 10;
+  string currency = 11;
+  string snapshot_id = 12;
+}

@@ -92,6 +92,31 @@ infra/                local infrastructure configuration
 - Performance numbers are published only with the dataset, command, hardware,
   and configuration used to measure them.
 
+## Historical-data workflow
+
+The reproducible public baseline imports Plotly's MIT-licensed five-year US
+equity dataset. Downloaded market data is stored under ignored `data/raw/`; only
+the request definition, schema, synthetic CI fixture, attribution, and checksums
+are committed. See [THIRD_PARTY_DATA.md](THIRD_PARTY_DATA.md).
+
+```bash
+marketstream-data download datasets/us-large-cap-v1.request.json \
+  --expected-manifest datasets/us-large-cap-v1.manifest.json
+marketstream-data verify datasets/us-large-cap-v1.manifest.json \
+  --data-dir data/raw/<snapshot-id>
+marketstream-replay plan data/raw/<snapshot-id>/manifest.json
+make topic
+marketstream-replay publish data/raw/<snapshot-id>/manifest.json \
+  --checkpoint data/checkpoints/us-large-cap-v1.json \
+  --events-per-second 20
+```
+
+`plan` verifies every file checksum and prints a digest of the complete ordered
+event-ID sequence without requiring Kafka. `publish` records a checkpoint only
+after Kafka acknowledges each event, so an interrupted replay can resume. The
+fixture under `tests/fixtures/market_data` is explicitly synthetic and exists
+only to keep CI deterministic and independent of provider availability.
+
 ## License
 
 Code in this independent repository is released under the MIT License. Market

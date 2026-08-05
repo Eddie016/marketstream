@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "us-large-cap-eod-v1-9bd1f15a683f",
+  "request_sha256": "9bd1f15a683fc697e815b948975060fcdd5349d625fe88be504d30c5fe575bc2",
+  "dataset_id": "us-large-cap-eod-v1",
+  "provider": "plotly-github",
+  "currency": "USD",
+  "requested_start_date": "2013-02-08",
+  "requested_end_date": "2018-02-07",
+  "generated_at": "2026-08-05T00:18:23.530486Z",
+  "files": [
+    {
+      "symbol": "AAPL",
+      "path": "AAPL.csv",
+      "sha256": "b881480f9e1ede60dc681486d62b9f7d782b8d5ddf126af54184724fd922a6a6",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    },
+    {
+      "symbol": "AMZN",
+      "path": "AMZN.csv",
+      "sha256": "9202b6dd01b59a1390845c77b96c8ad29ca822a76ef40fee37f2bd4ac3ecb9a6",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    },
+    {
+      "symbol": "GOOGL",
+      "path": "GOOGL.csv",
+      "sha256": "45829eacc3c4ba904dd89c8ce40ab2a090096aa7b4ec499153e7f6fe26668450",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    },
+    {
+      "symbol": "JPM",
+      "path": "JPM.csv",
+      "sha256": "5e8d1719bba27c54a8efc3d1c1624c65ff8832dcad2ee51b6df082d1000c5ccd",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    },
+    {
+      "symbol": "MSFT",
+      "path": "MSFT.csv",
+      "sha256": "c2f82f9016bff4c44bc58af869cd98efaf39c8863c8d3964f30708871d049984",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    },
+    {
+      "symbol": "NVDA",
+      "path": "NVDA.csv",
+      "sha256": "7a378625db3cc553e4a8aca0b281d90c91f8bdc61eb1aa0a3a33db3f84c005f4",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    },
+    {
+      "symbol": "XOM",
+      "path": "XOM.csv",
+      "sha256": "4cb11e10edce3afff3b3890d492ff64b61898fde05818141d1d8ee82801e646d",
+      "row_count": 1259,
+      "first_date": "2013-02-08",
+      "last_date": "2018-02-07"
+    }
+  ]
+}

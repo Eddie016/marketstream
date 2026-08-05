@@ -11,9 +11,12 @@ requires-python = ">=3.11,<3.14"
 license = { text = "MIT" }
 authors = [{ name = "Eddie" }]
 dependencies = [
+  "certifi==2026.7.22",
   "fastapi==0.116.1",
   "greenlet==3.5.4",
+  "kafka-python==2.3.1",
   "prometheus-client==0.22.1",
+  "protobuf==6.31.1",
   "psycopg[binary]==3.2.9",
   "pydantic-settings==2.10.1",
   "sqlalchemy==2.0.43",
@@ -22,12 +25,17 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+  "grpcio-tools==1.80.0",
   "httpx==0.28.1",
   "mypy==1.17.1",
   "pytest==8.4.1",
   "pytest-cov==6.2.1",
   "ruff==0.12.11",
 ]
+
+[project.scripts]
+marketstream-data = "marketstream.market_data.download:main"
+marketstream-replay = "marketstream.market_data.replay:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -42,6 +50,7 @@ testpaths = ["tests"]
 [tool.ruff]
 target-version = "py311"
 line-length = 88
+extend-exclude = ["src/marketstream/proto/*_pb2.*"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
@@ -50,9 +59,15 @@ select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
 python_version = "3.11"
 strict = true
 packages = ["marketstream"]
+exclude = ["src/marketstream/proto/.*_pb2.py"]
+
+[[tool.mypy.overrides]]
+module = ["kafka", "kafka.*"]
+ignore_missing_imports = true
 
 [tool.coverage.run]
 branch = true
+omit = ["src/marketstream/proto/*_pb2.py"]
 
 [tool.coverage.report]
 show_missing = true
