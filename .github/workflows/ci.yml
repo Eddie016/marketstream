@@ -22,6 +22,8 @@ jobs:
         run: make install-dev
       - name: Lint, type-check, and test
         run: make check
+      - name: Verify generated Protobuf contract
+        run: make proto && git diff --exit-code -- proto src/marketstream/proto
 
   container:
     runs-on: ubuntu-latest

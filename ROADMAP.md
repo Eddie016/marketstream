@@ -16,11 +16,11 @@ features in the resume or project README.
 
 ## M1 — Reproducible data
 
-- [ ] Versioned source manifest with SHA-256 checksums
-- [ ] Historical OHLCV downloader with validation and rate-limit handling
-- [ ] Committed deterministic CI fixture
-- [ ] Protobuf market-event schema with explicit schema version
-- [ ] Replay CLI supporting fixed ordering, speed, pause, and resume
+- [x] Versioned source manifest with SHA-256 checksums
+- [x] Historical OHLCV downloader with validation and bounded retries
+- [x] Committed deterministic CI fixture
+- [x] Protobuf market-event schema with explicit schema version
+- [x] Replay CLI supporting fixed ordering, speed, interruption, and resume
 
 Acceptance: the same manifest produces the same ordered event identifiers on
 two clean runs; CI succeeds without network access.

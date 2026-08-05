@@ -15,4 +15,5 @@ htmlcov/
 .coverage
 data/raw/
 data/processed/
+data/checkpoints/
 *.parquet
