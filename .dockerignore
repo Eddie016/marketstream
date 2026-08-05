@@ -8,4 +8,4 @@ __pycache__
 data
 docs
 tests
-*.md
+ROADMAP.md
