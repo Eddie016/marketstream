@@ -27,14 +27,16 @@ two clean runs; CI succeeds without network access.
 
 ## M2 — Reliable stream processing
 
-- [ ] Kafka topics partitioned by ticker
-- [ ] Idempotent consumer keyed by source, ticker, and trading date
-- [ ] Transactional checkpoint and query-model update
-- [ ] Parquet archive partitioned for analytical reads
-- [ ] Bounded retry and dead-letter topic
+- [x] Kafka topics partitioned by ticker
+- [x] Idempotent consumer keyed by source, ticker, and trading date
+- [x] Transactional checkpoint and query-model update
+- [x] Parquet archive partitioned for analytical reads
+- [x] Bounded retry and dead-letter topic
 
 Acceptance: replaying a snapshot twice does not change logical row counts;
 terminating a consumer mid-batch and restarting it yields the same final state.
+The local acceptance run is captured in
+[`docs/evidence/m2-local-acceptance.md`](docs/evidence/m2-local-acceptance.md).
 
 ## M3 — Research API
 

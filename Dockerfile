@@ -11,8 +11,10 @@ RUN python -m pip install \
     --require-hashes \
     --requirement requirements.lock
 
-COPY pyproject.toml README.md ./
+COPY pyproject.toml README.md alembic.ini ./
 COPY src ./src
+COPY migrations ./migrations
+COPY scripts/seed-m2-ci.py scripts/verify-m2.py ./scripts/
 RUN python -m pip install --prefix=/install --no-deps .
 
 FROM python:3.12.11-slim AS runtime
@@ -24,6 +26,9 @@ RUN groupadd --system marketstream && \
     useradd --system --gid marketstream --create-home marketstream
 
 COPY --from=builder /install /usr/local
+COPY --from=builder /build/alembic.ini /app/alembic.ini
+COPY --from=builder /build/migrations /app/migrations
+COPY --from=builder /build/scripts /app/scripts
 
 USER marketstream
 WORKDIR /app

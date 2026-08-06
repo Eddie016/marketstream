@@ -15,9 +15,11 @@ advice, predict future returns, or place real trades.
 
 ## Status
 
-Milestone 0 is in progress. The repository currently provides the service
-contract, architecture decisions, local infrastructure, API health endpoint,
-and CI quality gates. See [ROADMAP.md](ROADMAP.md) for acceptance criteria.
+Milestones M0--M2 are implemented: the repository includes reproducible market
+snapshots, deterministic Kafka replay, transactional idempotent consumption,
+DLQ isolation, and retry-safe Parquet archival. The research API and product UI
+remain planned work and are not described as shipped features. See
+[ROADMAP.md](ROADMAP.md) for acceptance criteria and current scope.
 
 ## Architecture
 
@@ -54,6 +56,13 @@ curl http://localhost:8000/health/ready
 ```
 
 OpenAPI documentation is available at <http://localhost:8000/docs>.
+
+Verify the running M2 stack's database checkpoints, Kafka end offsets, outbox,
+and readable Parquet object count:
+
+```bash
+make verify-m2
+```
 
 Stop the stack without deleting data:
 
@@ -116,6 +125,17 @@ event-ID sequence without requiring Kafka. `publish` records a checkpoint only
 after Kafka acknowledges each event, so an interrupted replay can resume. The
 fixture under `tests/fixtures/market_data` is explicitly synthetic and exists
 only to keep CI deterministic and independent of provider availability.
+
+## Processing guarantees
+
+The consumer commits the price row, archive outbox, and source-partition
+checkpoint in one PostgreSQL transaction, then commits the Kafka offset. A
+redelivery below the database checkpoint is a no-op; a gap stops processing.
+Invalid or conflicting events are retained in a dead-letter topic. The archive
+worker writes deterministic Parquet object keys from a transactional outbox, so
+retries converge after partial S3 failures. See
+[ADR 0004](docs/adr/0004-logical-exactly-once-processing.md) for the exact
+guarantee and its limits.
 
 ## License
 
