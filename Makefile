@@ -37,7 +37,8 @@ test:
 	python -m pytest
 
 up:
-	docker compose up --build --wait
+	docker compose up --build --detach
+	docker compose up --wait api
 
 verify-m2:
 	docker compose run --rm api python /app/scripts/verify-m2.py

@@ -31,7 +31,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Start complete stack
-        run: docker compose up --build --wait
+        run: |
+          docker compose up --build --detach
+          docker compose up --wait api
       - name: Publish valid, duplicate, and invalid events
         run: docker compose run --rm --no-deps api python /app/scripts/seed-m2-ci.py
       - name: Verify transactional convergence
